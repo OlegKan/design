@@ -17,15 +17,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    def globalConfiguration = rootProject.extensions.getByName("ext")
-
-    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
-    buildToolsVersion globalConfiguration["androidBuildToolsVersion"]
+    compileSdkVersion rootProject.ext.androidCompileSdk_version
+    buildToolsVersion rootProject.ext.androidBuildTools_version
     defaultConfig {
         applicationId "com.simplaapliko.design.example"
 
-        minSdkVersion globalConfiguration["androidMinSdkVersion"]
-        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
+        minSdkVersion rootProject.ext.androidMinSdk_version
+        targetSdkVersion rootProject.ext.androidTargetSdk_version
 
         versionCode 1
         versionName "1.0"
@@ -42,5 +40,5 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':design')
 
-    implementation rootProject.ext.appcompatV7
+    implementation "com.android.support:appcompat-v7:$androidSupport_version"
 }

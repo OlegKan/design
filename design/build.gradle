@@ -19,14 +19,12 @@ apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.simplaapliko'
 
 android {
-    def globalConfiguration = rootProject.extensions.getByName("ext")
-
-    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
-    buildToolsVersion globalConfiguration["androidBuildToolsVersion"]
+    compileSdkVersion rootProject.ext.androidCompileSdk_version
+    buildToolsVersion rootProject.ext.androidBuildTools_version
 
     defaultConfig {
-        minSdkVersion globalConfiguration["androidMinSdkVersion"]
-        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
+        minSdkVersion rootProject.ext.androidMinSdk_version
+        targetSdkVersion rootProject.ext.androidTargetSdk_version
 
         versionCode Integer.parseInt(VERSION_CODE)
         versionName VERSION_NAME
@@ -47,7 +45,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation rootProject.ext.supportAnnotations
+    implementation "com.android.support:support-annotations:$androidSupport_version"
 }
 
 // build a jar with source files
