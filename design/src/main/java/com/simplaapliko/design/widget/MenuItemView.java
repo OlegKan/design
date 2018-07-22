@@ -58,14 +58,16 @@ public class MenuItemView extends LinearLayout {
     private void init(Context context, @Nullable AttributeSet attrs) {
         inflate(context, R.layout.menu_item_view, this);
 
-        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.MenuItemView, 0, 0);
+        TypedArray a = context.getTheme()
+                .obtainStyledAttributes(attrs, R.styleable.MenuItemView, 0, 0);
 
         try {
             image = a.getResourceId(R.styleable.MenuItemView_image, 0);
             primaryText = a.getString(R.styleable.MenuItemView_primaryText);
             secondaryText = a.getString(R.styleable.MenuItemView_secondaryText);
             primaryTextAppearance = a.getResourceId(R.styleable.MenuItemView_primaryTextAppearance, 0);
-            secondaryTextAppearance = a.getResourceId(R.styleable.MenuItemView_secondaryTextAppearance, 0);
+            secondaryTextAppearance = a.getResourceId(
+                    R.styleable.MenuItemView_secondaryTextAppearance, 0);
         } finally {
             a.recycle();
         }
@@ -77,7 +79,8 @@ public class MenuItemView extends LinearLayout {
         secondaryTextView = findViewById(R.id.secondary_text);
 
         TypedValue outValue = new TypedValue();
-        getContext().getTheme().resolveAttribute(android.R.attr.selectableItemBackground, outValue, true);
+        getContext().getTheme()
+                .resolveAttribute(android.R.attr.selectableItemBackground, outValue, true);
         setBackgroundResource(outValue.resourceId);
 
         if (primaryTextAppearance == 0) {
