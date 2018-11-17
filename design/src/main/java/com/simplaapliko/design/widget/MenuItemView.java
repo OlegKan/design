@@ -18,7 +18,6 @@ package com.simplaapliko.design.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.FrameLayout;
@@ -28,13 +27,13 @@ import android.widget.TextView;
 
 import com.simplaapliko.design.R;
 
+import androidx.annotation.Nullable;
+
 public class MenuItemView extends LinearLayout {
 
     private int image;
     private String primaryText;
     private String secondaryText;
-    private int primaryTextAppearance;
-    private int secondaryTextAppearance;
 
     private LinearLayout rootView;
     private FrameLayout imageLayout;
@@ -61,6 +60,8 @@ public class MenuItemView extends LinearLayout {
         TypedArray a = context.getTheme()
                 .obtainStyledAttributes(attrs, R.styleable.MenuItemView, 0, 0);
 
+        int primaryTextAppearance;
+        int secondaryTextAppearance;
         try {
             image = a.getResourceId(R.styleable.MenuItemView_image, 0);
             primaryText = a.getString(R.styleable.MenuItemView_primaryText);
@@ -100,6 +101,10 @@ public class MenuItemView extends LinearLayout {
         setSecondaryText(secondaryText);
 
         secondaryTextView.setText(secondaryText);
+    }
+
+    public LinearLayout getView() {
+        return rootView;
     }
 
     public int getImage() {

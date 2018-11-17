@@ -18,7 +18,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion rootProject.ext.androidCompileSdk_version
-    buildToolsVersion rootProject.ext.androidBuildTools_version
+
     defaultConfig {
         applicationId "com.simplaapliko.design.example"
 
@@ -40,5 +40,5 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':design')
 
-    implementation "com.android.support:appcompat-v7:$androidSupport_version"
+    implementation "androidx.appcompat:appcompat:1.0.2"
 }

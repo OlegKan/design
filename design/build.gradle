@@ -20,7 +20,6 @@ group = 'com.github.simplaapliko'
 
 android {
     compileSdkVersion rootProject.ext.androidCompileSdk_version
-    buildToolsVersion rootProject.ext.androidBuildTools_version
 
     defaultConfig {
         minSdkVersion rootProject.ext.androidMinSdk_version
@@ -45,7 +44,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "com.android.support:support-annotations:$androidSupport_version"
+    implementation "androidx.annotation:annotation:1.0.0"
 }
 
 // build a jar with source files
@@ -77,5 +76,5 @@ android.libraryVariants.all { variant ->
     def task = project.tasks.create "jar${name.capitalize()}", Jar
     task.dependsOn variant.javaCompiler
     task.from variant.javaCompiler.destinationDir
-    artifacts.add('archives', task);
+    artifacts.add('archives', task)
 }
