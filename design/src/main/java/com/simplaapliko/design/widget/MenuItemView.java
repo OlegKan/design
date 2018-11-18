@@ -99,8 +99,6 @@ public class MenuItemView extends LinearLayout {
         setImage(image);
         setPrimaryText(primaryText);
         setSecondaryText(secondaryText);
-
-        secondaryTextView.setText(secondaryText);
     }
 
     public LinearLayout getView() {
@@ -111,13 +109,13 @@ public class MenuItemView extends LinearLayout {
         return image;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setImage(int value) {
+        image = value;
 
-        if (this.image == 0) {
+        if (image == 0) {
             imageLayout.setVisibility(GONE);
         } else {
-            imageView.setImageResource(this.image);
+            imageView.setImageResource(image);
             imageLayout.setVisibility(VISIBLE);
         }
     }
@@ -126,12 +124,14 @@ public class MenuItemView extends LinearLayout {
         return primaryText;
     }
 
-    public void setPrimaryText(String primaryText) {
-        this.primaryText = primaryText;
-        primaryTextView.setText(this.primaryText);
+    public void setPrimaryText(String value) {
+        primaryText = value;
+        primaryTextView.setText(primaryText);
 
-        if (this.primaryText == null) {
+        if (primaryText == null) {
             primaryTextView.setVisibility(GONE);
+        } else {
+            primaryTextView.setVisibility(VISIBLE);
         }
     }
 
@@ -139,13 +139,14 @@ public class MenuItemView extends LinearLayout {
         return secondaryText;
     }
 
-    public void setSecondaryText(String secondaryText) {
-        this.secondaryText = secondaryText;
+    public void setSecondaryText(String value) {
+        secondaryText = value;
+        secondaryTextView.setText(secondaryText);
 
-        secondaryTextView.setText(this.secondaryText);
-
-        if (this.secondaryText == null) {
+        if (secondaryText == null) {
             secondaryTextView.setVisibility(GONE);
+        } else {
+            secondaryTextView.setVisibility(VISIBLE);
         }
     }
 }
